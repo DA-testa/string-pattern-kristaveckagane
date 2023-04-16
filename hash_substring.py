@@ -6,13 +6,11 @@ Q = 101
 def read_input():
     try:
         ievade = input().rstrip()
-        print("ievade:", ievade)
     except EOFError:
         return ("", "")
 
     if "f" == ievade.lower():
         file = input().rstrip()
-        print("file:", file)
         try:
             with open("/tests/" + file, mode="r") as f:
                 pattern = f.readline().rstrip()
@@ -20,6 +18,7 @@ def read_input():
             return (pattern, text)
         except OSError as e:
             print(e)
+            return ("", "")
     elif "i" == ievade.lower():
         pattern = input().rstrip()
         text = input().rstrip()
