@@ -2,6 +2,7 @@ import sys
 
 B = 256
 Q = 101
+
 def read_input():
     try:
         ievade = input().strip()
@@ -17,6 +18,7 @@ def read_input():
             return (pattern, text)
         except OSError as e:
             print(e)
+            return ("", "")
     elif "i" == ievade.lower():
         pattern = input().strip()
         text = input().strip()
@@ -25,7 +27,10 @@ def read_input():
         return ("", "")
 
 def print_occurrences(output):
-    print(' '.join(map(str, output)))
+    if len(output) > 0:
+        print(' '.join(map(str, output)))
+    else:
+        print(-1)
 
 def get_occurrences(pattern, text):
     global B,Q
