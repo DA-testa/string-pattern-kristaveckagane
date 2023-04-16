@@ -55,4 +55,8 @@ def get_occurrences(pattern, text):
     return result
 
 if __name__ == '__main__':
-    print_occurrences(get_occurrences(*read_input()))
+    pattern, text = read_input()
+    if pattern == "" or text == "":
+        print("Invalid input")
+        sys.exit(1)
+    print_occurrences(get_occurrences(pattern, text))
