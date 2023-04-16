@@ -10,7 +10,7 @@ def read_input():
         return ("", "")
 
     if "f" == ievade.lower():
-        file = input().rstrip()
+        file = input().strip()
         try:
             with open("./tests/" + file, mode="r") as f:
                 pattern = f.readline().strip()
