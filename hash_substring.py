@@ -4,23 +4,26 @@ B = 256
 Q = 101
 
 def read_input():
-    if not sys.stdin.closed:
+    try:
         ievade = input().strip()
-        if "f" == ievade.lower():
-            file = input().rstrip()
-            try:
-                with open("./tests/" + file, mode="r") as f:
-                    pattern = f.readline().strip()
-                    text = f.readline().strip()
-                return (pattern, text)
-            except OSError as e:
-                print(e)
-        elif "i" == ievade.lower():
-            pattern = input().strip()
-            text = input().strip()
+    except EOFError:
+        return ("", "")
+
+    if "f" == ievade.lower():
+        file = input().rstrip()
+        try:
+            with open("./tests/" + file, mode="r") as f:
+                pattern = f.readline().strip()
+                text = f.readline().strip()
             return (pattern, text)
+        except OSError as e:
+            print(e)
+    elif "i" == ievade.lower():
+        pattern = input().strip()
+        text = input().strip()
+        return (pattern, text)
     else:
-        return ("","")
+        return ("", "")
 
 def print_occurrences(output):
     print(' '.join(map(str, output)))
