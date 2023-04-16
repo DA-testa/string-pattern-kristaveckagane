@@ -43,17 +43,17 @@ def get_occurrences(pattern, text):
     for i in range(1, plen):
         m = (m * B) % Q
     result = []
-    thash = 0
+    th= 0
     for i in range(plen):
-        thash = (B * thash + ord(text[i])) % Q
+        th = (B * th + ord(text[i])) % Q
     for s in range(tlen - plen + 1):
-        if thash == r:
+        if th == r:
             if text[s:s + plen] == pattern:
                 result.append(s)
         if s < tlen - plen:
-            thash = (thash - m * ord(text[s])) % Q
-            thash = (thash * B + ord(text[s + plen])) % Q
-            thash = (thash + Q) % Q
+            th = (th - m * ord(text[s])) % Q
+            th = (th * B + ord(text[s + plen])) % Q
+            th = (th + Q) % Q
     return result
 
 if __name__ == '__main__':
