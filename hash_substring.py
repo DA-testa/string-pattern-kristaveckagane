@@ -39,7 +39,7 @@ def get_occurrences(pattern, text):
     # this function should find the occurances using Rabin Karp alghoritm 
     intpattern = int(pattern)
     intpattern_len=len(intpattern)
-    for i in range(intpattern_len)
+    for i in range(intpattern_len):
      r = (B*r + ord(pattern[i])) % Q
     tlen = len(text)
     plen=len(pattern)
