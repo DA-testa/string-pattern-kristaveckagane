@@ -44,7 +44,7 @@ def get_occurrences(pattern, text):
     tlen = len(text)
     plen=len(pattern)
     m = 1
-    for i in range(1,plen)
+    for i in range(1,plen):
      m = (multiple r * B) % Q
 
     # and return an iterable variable
