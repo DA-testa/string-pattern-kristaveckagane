@@ -11,10 +11,10 @@ def read_input():
 
     if "f" == ievade.lower():
         try:
-            with open("./tests/", mode="r") as f:
-              lines = f.readlines()
-              pattern = lines[0].rstrip()
-              text = lines[1].rstrip()
+            with open('./tests/test_06.txt', 'r') as f:
+               lines = f.readlines()
+               pattern = lines[0].rstrip()
+               text = lines[1].rstrip()
             return (pattern, text)
         except OSError as e:
             print(e)
