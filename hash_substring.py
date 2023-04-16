@@ -12,7 +12,7 @@ def read_input():
     if "f" == ievade.lower():
         try:
             file = input("").rstrip()
-            with open("/tests/" + file, mode="r") as f:
+            with open("./tests/" + file, mode="r") as f:
                 pattern, text = f.readlines()
             return (pattern.rstrip(), text.rstrip())
         except OSError as e:
