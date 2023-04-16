@@ -4,22 +4,20 @@ Q = 256
 def read_input():
     ievade = input().strip()
     if "f" == ievade.lower():
-        file = input("").strip()
+        file = input().strip()
         try:
-            file = open("./tests/" + file, mode="r")
-            pattern = file.readline().rstrip()
-            text = file.readline().rstrip()
+            with open("./tests/" + file, mode="r") as f:
+                pattern = f.readline().strip()
+                text = f.readline().strip()
             return (pattern, text)
         except OSError as e:
             print(e)
     if "i" == ievade.lower():
-        pattern = input().rstrip()
-        text = input().rstrip()
+        pattern = input().strip()
+        text = input().strip()
         return (pattern, text)
 
-
 def print_occurrences(output):
- 
     print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
