@@ -2,7 +2,6 @@ import sys
 
 B = 256
 Q = 101
-
 def read_input():
     try:
         ievade = input().strip()
@@ -12,13 +11,12 @@ def read_input():
     if "f" == ievade.lower():
         file = input().strip()
         try:
-            with open("./tests/" + file, mode="r") as f:
+            with open("/tests/" + file, mode="r") as f:
                 pattern = f.readline().strip()
                 text = f.readline().strip()
             return (pattern, text)
         except OSError as e:
             print(e)
-            return ("", "")
     elif "i" == ievade.lower():
         pattern = input().strip()
         text = input().strip()
@@ -27,10 +25,7 @@ def read_input():
         return ("", "")
 
 def print_occurrences(output):
-    if len(output) > 0:
-        print(' '.join(map(str, output)))
-    else:
-        print(-1)
+    print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
     global B,Q
