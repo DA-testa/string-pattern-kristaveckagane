@@ -2,24 +2,25 @@ import sys
 
 B = 256
 Q = 101
+
 def read_input():
     try:
-        ievade = input().strip()
+        ievade = input().rstrip()
     except EOFError:
         return ("", "")
 
     if "f" == ievade.lower():
-        file = input().strip()
+        file = input().rstrip()
         try:
             with open("/tests/" + file, mode="r") as f:
-                pattern = f.readline().strip()
-                text = f.readline().strip()
+                pattern = f.readline().rstrip()
+                text = f.readline().rstrip()
             return (pattern, text)
         except OSError as e:
             print(e)
     elif "i" == ievade.lower():
-        pattern = input().strip()
-        text = input().strip()
+        pattern = input().rstrip()
+        text = input().rstrip()
         return (pattern, text)
     else:
         return ("", "")
@@ -52,7 +53,6 @@ def get_occurrences(pattern, text):
             thash = (thash * B + ord(text[s + plen])) % Q
             thash = (thash + Q) % Q
     return result
-
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
