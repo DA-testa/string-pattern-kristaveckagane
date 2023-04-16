@@ -7,7 +7,7 @@ def read_input():
     if not sys.stdin.closed:
         ievade = input().strip()
         if "f" == ievade.lower():
-            file = input().strip()
+            file = input().rstrip()
             try:
                 with open("./tests/" + file, mode="r") as f:
                     pattern = f.readline().strip()
