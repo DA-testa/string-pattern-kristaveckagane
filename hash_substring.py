@@ -25,6 +25,7 @@ def read_input():
     else:
         return ("", "")
 
+
 def print_occurrences(output):
     print(' '.join(map(str, output)))
 
