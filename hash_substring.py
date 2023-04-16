@@ -11,7 +11,7 @@ def read_input():
 
     if "f" == ievade.lower():
         try:
-            with open("tests/06.txt", mode="r") as f:
+            with open("./tests/", mode="r") as f:
               lines = f.readlines()
               pattern = lines[0].rstrip()
               text = lines[1].rstrip()
