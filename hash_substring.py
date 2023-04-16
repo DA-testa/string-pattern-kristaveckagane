@@ -1,5 +1,5 @@
-B = 13
-Q = 256
+B = 256
+Q = 101
 
 def read_input():
     ievade = input().strip()
@@ -24,8 +24,7 @@ def get_occurrences(pattern, text):
     global B,Q
     r = 0
 
-    intpattern = int(pattern)
-    intpattern_len = len(intpattern)
+    intpattern_len = len(pattern)
     for i in range(intpattern_len):
         r = (B * r + ord(pattern[i])) % Q
     tlen = len(text)
@@ -50,4 +49,3 @@ def get_occurrences(pattern, text):
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
-
