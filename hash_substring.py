@@ -7,7 +7,7 @@ def read_input():
     if not sys.stdin.closed:
         ievade = input().strip()
         if "f" == ievade.lower():
-            file = input().strip()
+            file = input().rstrip()
             try:
                 with open("./tests/" + file, mode="r") as f:
                     pattern = f.readline().strip()
@@ -53,6 +53,4 @@ def get_occurrences(pattern, text):
 
 
 if __name__ == '__main__':
-    input_data = read_input()
-    if input_data[0] and input_data[1]:
-        print_occurrences(get_occurrences(*input_data))
+    print_occurrences(get_occurrences(*read_input()))
