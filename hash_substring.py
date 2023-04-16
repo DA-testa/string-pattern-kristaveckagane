@@ -5,7 +5,7 @@ Q = 101
 
 def read_input():
     try:
-        ievade = input().rstrip()
+        ievade = input().strip()
     except EOFError:
         return ("", "")
 
@@ -13,14 +13,14 @@ def read_input():
         file = input().rstrip()
         try:
             with open("/tests/" + file, mode="r") as f:
-                pattern = f.readline().rstrip()
-                text = f.readline().rstrip()
+                pattern = f.readline().strip()
+                text = f.readline().strip()
             return (pattern, text)
         except OSError as e:
             print(e)
     elif "i" == ievade.lower():
-        pattern = input().rstrip()
-        text = input().rstrip()
+        pattern = input().strip()
+        text = input().strip()
         return (pattern, text)
     else:
         return ("", "")
