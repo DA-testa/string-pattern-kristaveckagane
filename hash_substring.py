@@ -3,7 +3,6 @@ import sys
 B = 256
 Q = 101
 
-
 def read_input():
     try:
         ievade = input().rstrip()
@@ -12,7 +11,7 @@ def read_input():
 
     if "f" == ievade.lower():
         try:
-            file = input().strip()
+            file = input("").strip()
             with open("./tests/" + file, mode="r") as f:
                 pattern, text = f.readlines()
             return (pattern.rstrip(), text.rstrip())
@@ -28,40 +27,33 @@ def read_input():
 
 
 def print_occurrences(output):
-    if len(output) == 0:
-        print("-1")
-    else:
-        print(' '.join(map(str, output)))
-
+    print(' '.join(map(str, output)))
 
 def get_occurrences(pattern, text):
-    global B, Q
+    global B,Q
     r = 0
 
-    pattern_len = len(pattern)
-    for i in range(pattern_len):
+    intpattern_len = len(pattern)
+    for i in range(intpattern_len):
         r = (B * r + ord(pattern[i])) % Q
-
-    text_len = len(text)
-    pattern_hash = 0
-    text_hash = 0
-    h = pow(B, pattern_len - 1, Q)
-
+    tlen = len(text)
+    plen = len(pattern)
+    m = 1
+    for i in range(1, plen):
+        m = (m * B) % Q
     result = []
-
-    for i in range(pattern_len):
-        pattern_hash = (B * pattern_hash + ord(pattern[i])) % Q
-        text_hash = (B * text_hash + ord(text[i])) % Q
-
-    for i in range(text_len - pattern_len + 1):
-        if pattern_hash == text_hash and pattern == text[i:i + pattern_len]:
-            result.append(i)
-
-        if i < text_len - pattern_len:
-            text_hash = (B * (text_hash - ord(text[i]) * h) + ord(text[i + pattern_len])) % Q
-
+    thash = 0
+    for i in range(plen):
+        thash = (B * thash + ord(text[i])) % Q
+    for s in range(tlen - plen + 1):
+        if thash == r:
+            if text[s:s + plen] == pattern:
+                result.append(s)
+        if s < tlen - plen:
+            thash = (thash - m * ord(text[s])) % Q
+            thash = (thash * B + ord(text[s + plen])) % Q
+            thash = (thash + Q) % Q
     return result
-
 
 if __name__ == '__main__':
     print_occurrences(get_occurrences(*read_input()))
