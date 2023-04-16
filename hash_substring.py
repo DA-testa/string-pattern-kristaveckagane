@@ -2,7 +2,6 @@ import sys
 
 B = 256
 Q = 101
-
 def read_input():
     try:
         ievade = input().strip()
